@@ -1,12 +1,3 @@
-// var colors = [
-//     "rgb(255, 0, 0)",
-//     "rgb(255, 255, 0)",
-//     "rgb(0, 255, 0)",
-//     "rgb(0, 255, 255)",
-//     "rgb(0, 0, 255)",
-//     "rgb(255, 0, 255)"
-// ]
-
 var numSquares = 6
 var colors = [];
 var pickedColor;
@@ -22,19 +13,13 @@ init();
 
 function init() {
     // mode buttons event listeners
-    for (var i = 0; i < modeButtons.length; i++) {
-        modeButtons[i].addEventListener("click", function () {
-            modeButtons[0].classList.remove("selected")
-            modeButtons[1].classList.remove("selected")
-            this.classList.add("selected")
-            this.textContent === "Easy" ? numSquares = 3 : numSquares = 6;
-            reset();
-        })
-    }
+    setUpModeButtons();
+    setUpSquares();
+    reset();
+}
 
+function setUpSquares() {
     for (var i = 0; i < squares.length; i++) {
-        // // add initial colors to squares 
-        // squares[i].style.backgroundColor = colors[i]
         // add click listeners to squares 
         squares[i].addEventListener("click", function () {
             // grab color of clicked square 
@@ -53,9 +38,20 @@ function init() {
 
         })
     }
-    reset();
 }
 
+function setUpModeButtons() {
+    // mode buttons event listeners
+    for (var i = 0; i < modeButtons.length; i++) {
+        modeButtons[i].addEventListener("click", function () {
+            modeButtons[0].classList.remove("selected")
+            modeButtons[1].classList.remove("selected")
+            this.classList.add("selected")
+            this.textContent === "Easy" ? numSquares = 3 : numSquares = 6;
+            reset();
+        })
+    }
+}
 
 
 function reset() {
